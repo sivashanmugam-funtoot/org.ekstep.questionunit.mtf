@@ -4,6 +4,10 @@
  * Sachin<sachin.kumar@goodworklabs.com>
  */
 angular.module('mtfApp', ['org.ekstep.question']).controller('mtfQuestionFormController', ['$scope', '$rootScope', 'questionServices', function ($scope, $rootScope, questionServices) {
+  $scope.editorConstants = {
+    maxPair : 4
+  }
+
   $scope.mtfConfiguartion = {
     'questionConfig': {
       'isText': true,
@@ -170,7 +174,7 @@ angular.module('mtfApp', ['org.ekstep.question']).controller('mtfQuestionFormCon
       'hint': '',
       'mapIndex': $scope.mtfFormData.option.optionsRHS.length + 1
     };
-    if ($scope.mtfFormData.option.optionsLHS.length < 5) {
+    if ($scope.mtfFormData.option.optionsLHS.length < $scope.editorConstants.maxPair) {
       $scope.mtfFormData.option.optionsLHS.push(optionLHS);
       $scope.mtfFormData.option.optionsRHS.push(optionRHS);
     }
